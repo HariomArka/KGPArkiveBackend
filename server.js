@@ -1,22 +1,19 @@
 require('dotenv').config();
 
-console.log("MONG_URI from .env:", process.env.MONG_URI); // debug
+console.log("MONG_URI from .env:", process.env.MONG_URI);
 
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-// Import routes
 const questionRoutes = require('./routes/questionRoutes');
 const authRoutes = require('./routes/auth'); 
 const mailRoutes = require('./routes/mail');
 
 const app = express();
 
-// Middleware
 app.use(express.json());
 
-// ✅ CORS config (restrict origin in production)
 app.use(
   cors({
     origin: process.env.CLIENT_URL || "*", // e.g., "https://yourfrontend.com"
